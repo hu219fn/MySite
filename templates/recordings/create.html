@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}اضافة ملخص{% endblock title %}
+{% block body %}
+<form method='post' enctype="multipart/form-data">
+    <h1>اضافة ملخص</h1>
+    {% csrf_token %}
+    <p>
+        <label for='title'>عنوان الملخص*:</label>
+        <input type="text" name="title" id="title">
+    </p>
+    <p>
+        <label for='description'>الوصف:</label>
+        <textarea name='description' id='description'></textarea>
+    </p>
+    <p>
+        <label for='url'>او اضافة الرابط:</label>
+        <input type='url' name='url' id='url'>
+    </p>
+    <input type='submit' value='حفظ'>
+</form>
+<!--
+    <div class="container">
+        <div class="display">
+
+        </div>
+
+        <div class="controllers">
+
+        </div>
+    </div>
+    <script>
+        const display = document.querySelector('.display')
+        const controllerWrapper = document.querySelector('.controllers')
+        const State = ['Initial', 'Record', 'Download']
+        let stateIndex = 0
+        let mediaRecorder, chunks = [], audioURL = ''
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            console.log('mediaDevices supported..')
+            navigator.mediaDevices.getUserMedia({
+                audio: true
+            }).then(stream => {
+                mediaRecorder = new MediaRecorder(stream)
+                mediaRecorder.ondataavailable = (e) => {
+                    chunks.push(e.data)
+                }
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(chunks, {'type': 'audio/ogg; codecs=opus'})
+                    chunks = []
+                    audioURL = window.URL.createObjectURL(blob)
+                    document.querySelector('audio').src = audioURL
+                }
+            }).catch(error => {
+                console.log('Following error has occured : ',error)
+            })
+        }else{
+            stateIndex = ''
+            application(stateIndex)
+        }
+        const clearControls = () => {
+            controllerWrapper.textContent = ''
+        }
+        const record = () => {
+            stateIndex = 1
+            mediaRecorder.start()
+            application(stateIndex)
+        }
+        const stopRecording = () => {
+            stateIndex = 2
+            mediaRecorder.stop()
+            application(stateIndex)
+        }
+        const addButton = (id, funString, text) => {
+            const btn = document.createElement('button')
+            btn.id = id
+            btn.setAttribute('onclick', funString)
+            btn.textContent = text
+            controllerWrapper.append(btn)
+        }
+        const addMessage = (text) => {
+            const msg = document.createElement('p')
+            msg.textContent = text
+            display.append(msg)
+        }
+        const addAudio = () => {
+            const audio = document.createElement('audio')
+            audio.controls = true
+            audio.src = audioURL
+            display.append(audio)
+        }
+        const application = (index) => {
+            switch (State[index]) {
+                case 'Initial':
+                    clearControls()
+                    addButton('record', 'record()', 'Start Recording')
+                    break;
+                case 'Record':
+                    clearControls()
+                    addButton('stop', 'stopRecording()', 'Stop Recording')
+                    break
+                case 'Download':
+                    clearControls()
+                    addAudio()
+                    addButton('record', 'record()', 'Record Again')
+                    break
+                default:
+                    clearControls()
+                    addMessage('Your browser does not support mediaDevices')
+                    break;
+            }
+        }
+        application(stateIndex)
+    </script>
+-->
+{% endblock body %}

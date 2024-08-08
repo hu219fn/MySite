@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}انشاء الدرس{% endblock title %}
+{% block body %}
+<form method='post'>
+    <h1>اضافة درس</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='حفظ'>
+</form>
+{% endblock body %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{item.title}}{% endblock title %}
+{% block body %}
+<div class='detail'>
+    <h1>~~ {{item.title}} ~~</h1>
+    <p>{{item.description}}</p>
+    <a class='p-abs' href='/'><span class="material-symbols-rounded">arrow_back_ios</span></a>
+    <section style='background-color:#FF4E88'>
+        <img src="https://cdn0.iconfinder.com/data/icons/interior-and-decor-vol-1-1/512/15-1024.png">
+        <h2><a href='/lesson/{{item.id}}/books/'>كتب {{item.title}}</a></h2>
+    </section>
+    <section style='background-color:#FF8C9E'>
+        <img src="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/8-1024.png">
+        <h2><a href='/lesson/{{item.id}}/notebooks/'>ملازم {{item.title}}</a></h2>
+    </section>
+    <section style='background-color:#FFDA76'>
+        <img src="https://cdn2.iconfinder.com/data/icons/kids/128x128/actions/editcopy.png">
+        <h2><a href='/lesson/{{item.id}}/mlkhasat/'>ملخصات {{item.title}}</a></h2>
+    </section>
+    <section style='background-color:#B4D6CD'>
+        <img src="https://cdn3.iconfinder.com/data/icons/online-learning-vol-1-2/64/Qa-1024.png">
+        <h2><a href='/lesson/{{item.id}}/questions/'>الاسئلة {{item.title}}</a></h2>
+    </section>
+    <section style='background-color:#E68369'>
+        <img src="https://cdn2.iconfinder.com/data/icons/xomo-basics/128/document-03-1024.png">
+        <h2><a href='/lesson/{{item.id}}/importantQuestions/'>وزاريات {{item.title}}</a></h2>
+    </section>
+    <section style='background-color:#914F1E'>
+        <img src="https://cdn3.iconfinder.com/data/icons/jazz-music-6/512/02_Microphone_Music_And_Multimedia_Voice_Recording_Radio_Sound_Vintage-1024.png">
+        <h2><a href='/lesson/{{item.id}}/recordings/'>تسجيلات {{item.title}}</a></h2>
+    </section>
+</div>
+{% endblock body %}

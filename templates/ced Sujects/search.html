@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}الصفحة الرئيسية{% endblock title %}
+{% block body %}
+<header>
+    <button><a href='/add_subject/'>اضافة درس</a></button>
+    <button><a href='/'>الصفحة الرئيسية</a></button>
+</header>
+<div class='container'>
+    {% for subject in subjects %}
+    <div>
+        <a href='/lesson/{{subject.id}}'>
+            <h2>{{ subject.title }}</h2>
+            {% if subject.description %}
+            <p>{{ subject.description }}</p>
+            {% endif %}
+            <b>{{ subject.date }}</b>
+        </a>
+        <ul>
+            <li><a style='color:darkseagreen' href='/edit-subject/{{subject.id}}/' style='color: darkseagreen;'><span class="material-symbols-outlined">edit_square</span></a></li>
+            <li><a style='color:coral' href='/del-subject/{{subject.id}}/' style='color: coral;'><span class="material-symbols-outlined">delete</span></a></li>
+        </ul>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock body %}

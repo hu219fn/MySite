@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}حذف التسجيل{% endblock title %}
+{% block body %}
+<form method='post' class='delform'>
+    <h1>حذف التسجيل</h1>
+    {% csrf_token %}
+    <h2>هل انت متاكد من حذف هذا التسجيل؟</h2>
+    <div>
+        <button type='submit'>نعم</button>
+        <a href="/recordings/{{item.id}}">لا</a>
+    </div>
+</form>
+{% endblock body %}

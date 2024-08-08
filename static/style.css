@@ -1,0 +1,484 @@
+* {margin: 0;padding: 0;font-family: Tahoma, Verdana, sans-serif;outline: none;}
+main {
+    background-color: #f9f9f9;
+    padding: 30px 20px;
+    min-height: 100%;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header button {
+    background-color: transparent;
+    border: none;
+}
+form input[type=submit],
+header button a {
+    display: block;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 1.25px;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 10px 20px;
+    width: fit-content;
+}
+form input[type=submit]:hover,
+header button a:hover {
+    text-decoration: underline;
+    background-color: #eee;
+}
+header form {
+    display: flex;
+    align-items: center;
+}
+header form button {
+    padding: 6px 10px;
+    border: 1px solid #777;
+    border-radius: 2px;
+    background-color: #fff;
+    margin-top: -5px;
+    cursor: pointer;
+}
+header form button span {
+    font-weight: 300!important;
+}
+header form button:hover span {
+    font-weight: bolder!important;
+}
+header form a {
+    color: #333;
+    margin: 0;
+}
+header form a span.material-symbols-rounded {
+    color: #333;
+    padding: 20px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 300;
+}
+header form a span.material-symbols-rounded:hover {
+    font-weight: bolder;
+}
+form h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 15px;
+}
+form label {
+    font-size: 23px;
+    color: #333;
+    display: block;
+}
+form input,
+form textarea,
+form select {
+    font-size: 20px;
+    padding: 5px 10px;
+    width: 100%;
+    margin: 10px 0 15px 0;
+}
+form textarea {
+    min-width: 100%;
+    max-width: 100%;
+}
+form input[type=submit] {
+    display: block;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 1.25px;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: fit-content;
+}
+form ul {
+    list-style-type: circle;
+    margin:0 0 5px 0;
+}
+form ul li,
+form span.helptext,
+form p {
+    margin: 5px 0;
+    font-size: 20px;
+}
+form p a {
+    color: steelblue;
+    text-decoration: none;
+}
+form p a:hover {
+    text-decoration: underline;
+}
+.delform {
+    text-align: center;
+}
+.delform div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delform div a,
+.delform div button {
+    display: block;
+    color: coral;
+    border: 2px solid coral;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 1.25px;
+    cursor: pointer;
+    line-height: 50px;
+    padding: 20px 30px;
+    width: fit-content;
+    background-color: #fff;
+    margin: 20px 10px;
+}
+.delform div a:hover,
+.delform div button:hover {
+    text-decoration: underline;
+}
+.delform div button {
+    color: darkseagreen;
+    border: 2px solid darkseagreen;
+}
+.textform {
+    text-align: center;
+    margin: 20px;
+}
+.textform h1 {
+    font-size: 50px;
+}
+.textform p {
+    font-size: 25px;
+    margin: 10px 0;
+}
+.textform a {
+    color: steelblue;
+    margin-top: 10px;
+    display: block;
+    font-size: 30px;
+    text-decoration: none;
+}
+.textform a:hover {
+    text-decoration: underline;
+}
+.container {
+    margin: 20px 0;
+}
+.container div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.container div a {
+    display: block;
+    text-decoration: none;
+}
+.container div a h2 {
+    color: steelblue;
+    margin-bottom: 5px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+}
+.container div a p {
+    color: #333;
+    margin: 10px 0;
+    font-size: 18px;
+}
+.container div a b {
+    color: #000;
+}
+.container div ul {
+    list-style: none;
+}
+.container div ul li a {
+    padding: 5px;
+    margin: 5px 0;
+}
+.container div ul li a span {
+    font-weight: 500;
+}
+.container div ul li a:hover span{
+    font-weight: bolder;
+}
+.container hr {
+    margin: 10px 0;
+    border: 1px solid #333;
+    border-radius: 3px;
+}
+.container div a:hover {
+    cursor: pointer;
+}
+.books h1,
+.detail h1 {
+    text-align: center;
+    color: steelblue;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    line-height: 0.5;
+    letter-spacing: 1.25px;
+}
+.books h1 span,
+.detail h1 span {
+    font-size: 60px;
+    line-height: 1.25;
+}
+.detail p {
+    color: #666;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1.25px;
+}
+.detail section {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 20px;
+    background-color: darkolivegreen;
+    color: #fff;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+.detail section:hover {
+    text-decoration: underline;
+}
+.detail section img {
+    width: 50px;
+    margin: 0 0 0 20px;
+}
+.detail section h2 a {
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 1.25px;
+    font-size: 30px;
+}
+.container .book {
+    background-color: steelblue;
+    color: #fff;
+    margin: 20px 0;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+.container .book a div:last-child:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.container .book a p,
+.container .book a h2,
+.container .book a b {
+    color: #fff;
+}
+.container .book a span.material-symbols-outlined {
+    color: #fff;
+    margin: 0 0 0 10px;
+    font-size: 150px;
+}
+.container .book ul li a span {
+    font-size: 30px!important;
+}
+.container div main .container .controllers {
+    padding: 0;
+}
+.container div main .container .controllers button,
+.items {
+    display: flex!important;
+    align-items: center!important;
+    padding: 10px 20px;
+    width: 325px;
+    margin: 0 0 5px 0;
+    color: steelblue;
+    cursor: pointer;
+}
+.container div main .container .controllers button,
+.items a {
+    display: flex!important;
+    align-items: center!important;
+    color: steelblue;
+}
+.container div main .container .controllers button,
+.items small {
+    font-size: 20px;
+}
+.container div main .container .controllers button,
+.items a small {
+    font-size: 20px;
+}
+.items span.material-symbols-rounded,
+.items a span.material-symbols-rounded {
+    font-size: 30px;
+    margin: 0 0 0 10px;
+}
+.container div main h2 {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+.container div main p,
+.container div main b {
+    font-size: 20px;
+    margin: 5px 0;
+    display: block;
+}
+.container div main p {
+    width: 80%;
+    height: 40px;
+    overflow: scroll;
+    scrollbar-width: .5px;
+    color: #333;
+    text-overflow: ellipsis;
+}
+.fs-25px {
+    font-size: 25px;
+    text-decoration: none;
+}
+.fs-25px:hover {
+    text-decoration: underline;
+}
+.p-abs {
+    position: absolute;
+    top: 90;
+    left: 15;
+}
+.p-abs span {
+    color: #333;
+    padding: 20px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 300;
+}
+.p-abs span:hover {
+    font-weight: bolder;
+}
+.container div main a img {
+    width: 150px;
+    margin: 0 0 0 20px;
+    border: 1px solid #333;
+    border-radius: 3px;
+}
+.container div main a span.material-symbols-rounded#icon {
+    width: 150px;
+    margin: 0 0 0 20px;
+    font-size: 150px;
+    color: #333;
+}
+audio{
+    display: block;
+}
+.btn {
+    border: 1.5px solid;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+.gray {
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    list-style-type: none;
+    margin: 0;
+    padding:0 5%;
+    overflow: hidden;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+    z-index: 5;
+    position: sticky;
+    top: 0;
+}
+.gray div {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.gray li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    font-size: 30px;
+}
+.gray li button {
+    background-color: transparent;
+    border: none;
+    color: #444;
+}
+#menu0 {
+    margin: 0 15px;
+}
+#menu0 span.material-symbols-rounded,
+.gray span.material-symbols-rounded {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 400;
+    color: #444;
+}
+#menu0 span.material-symbols-rounded:hover,
+.gray span.material-symbols-rounded:hover {
+    font-weight: bolder;
+}
+#menu0 span.material-symbols-rounded {
+    font-size: 40px;
+}
+@media (max-width:1000px){
+    #menu0 span.material-symbols-rounded,
+    .container .book ul li a span,
+    form h1,
+    .detail h1 span,
+    .detail h1,
+    header button a {
+        font-size: 50px!important;
+    }
+    .gray span.material-symbols-rounded,
+    .fs-25px,
+    .detail section h2 a,
+    .container div ul li a span,
+    .container div a h2,
+    .textform a,
+    form input[type=submit],
+    form input,
+    form label,
+    form select {
+        font-size: 40px;    
+    }
+    .container div main p,
+    .container div main b,
+    .items small,
+    .items a small,
+    .container div a p,
+    .container div a b,
+    .textform p,
+    .detail p,
+    form span.helptext,
+    form p {
+        font-size: 30px;
+    }
+    form ul li {
+        display: none;
+    }
+    .detail section{
+        padding: 20px;
+    }
+    header form button {
+        padding: 10px;
+    }
+    header form button span {
+        font-size: 40px!important;
+        font-weight: 300!important;
+    }
+    header form button:hover span {
+        font-weight: bolder!important;
+    }
+}

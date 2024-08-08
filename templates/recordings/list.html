@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{subject.title}} - التسجيلات{% endblock title %}
+{% block body %}
+<div class='container' style='margin:0'>
+    <header>
+        <button><a href='/lesson/{{subject.id}}/add_recordings/'>اضافة تسجيل</a></button>
+        <form method='GET' action='/lesson/{{subject.id}}/search-recordings/'>
+            <input type='text' name='search_recording' placeholder='ابحث عن تسجيل'>
+            <button type='submit'><span class="material-symbols-outlined">search</span></button>
+            <a href='/lesson/{{subject.id}}/'><span class="material-symbols-rounded">arrow_back_ios</span></a>
+        </form>
+    </header>
+    {% for item in items %}
+    <div>
+        <main>
+            <a href='/recordings/{{item.id}}/'>
+                <h2>{{ item.title }}</h2>
+                {% if item.description %}
+                <p>{{ item.description }}</p>
+                {% endif %}
+                {% if item.file %}
+                <button class='items'>
+                    <a target='items' href='{{item.file.url}}'>
+                        <span class="material-symbols-rounded">attach_file</span>
+                        <small>الملف</small>
+                    </a>
+                </button>
+                {% endif %}
+                {% if item.image %}
+                <button class='items'>
+                    <a target='_blank' href='{{item.image.url}}'>
+                        <span class="material-symbols-rounded">photo</span>
+                        <small>الصورة</small>
+                    </a>
+                </button>
+                {% endif %}
+                {% if item.url %}
+                <button class='items'>
+                    <a target='_blank' href='{{item.url}}'>
+                        <span class="material-symbols-rounded">link</span>
+                        <small>الرابط</small>
+                    </a>
+                </button>
+                {% endif %}
+                <b>{{ item.date }}</b>
+            </a>
+        </main>
+    </div>
+    <hr style='margin: 0;'>
+    {% endfor %}
+</div>
+
+{% endblock body %}

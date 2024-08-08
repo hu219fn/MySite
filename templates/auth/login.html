@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}تسجيل دخول{% endblock title %}
+
+{% block body %}
+<div>
+    <form method='post'>
+        <h1>تسجيل الدخول</h1>
+        {% csrf_token %}
+        {% for input in form %}
+        {% if input.label == 'Username' %}
+        <label>اسم المستخدم*:</label>
+        {% else %}
+        <label>كلمة المرور*:</label>
+        {% endif %}
+        {{input}}
+        {% endfor %}
+        <input type='submit' value='حفظ'>
+        <p>لا تملك حساب؟ <a href="/register/">انشاء الحساب</a> .</p>
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}ملخصات - {{item.title}}{% endblock title %}
+{% block body %}
+
+<div class='container'>
+    <a class='p-abs' href='/lesson/{{item.subject.id}}/mlkhasat/'><span class="material-symbols-rounded">arrow_back_ios</span></a>
+    <div>
+        <main>
+            <h2>{{ item.title }}</h2>
+            {% if item.description %}
+            <p style='margin: 10px 0;height: auto;width: auto;'>{{ item.description }}</p>
+            {% endif %}
+            {% if item.file %}
+            <button class='items'>
+                <a target='items' href='{{item.file.url}}'>
+                    <span class="material-symbols-rounded">attach_file</span>
+                    <small>الملف</small>
+                </a>
+            </button>
+            {% endif %}
+            {% if item.image %}
+            <button class='items'>
+                <a target='_blank' href='{{item.image.url}}'>
+                    <span class="material-symbols-rounded">photo</span>
+                    <small>الصورة</small>
+                </a>
+            </button>
+            {% endif %}
+            {% if item.url %}
+            <button class='items'>
+                <a target='_blank' href='{{item.url}}'>
+                    <span class="material-symbols-rounded">link</span>
+                    <small>الرابط</small>
+                </a>
+            </button>
+            {% endif %}
+
+            <b style='margin: 10px 0;'>{{ item.date }}</b>
+        </main>
+    </div>
+    <ul style='display: flex; list-style:none'>
+        <li style='margin:0 10px'><a class='fs-25px' href='/mlkhasats/edit/{{item.id}}/' style='color:darkseagreen' >تعديل</a></li>
+        <li style='margin:0 10px'><a class='fs-25px' href='/mlkhasats/del/{{item.id}}/' style='color:coral' >حذف</a></li>
+    </ul>
+</div>
+
+{% endblock body %}

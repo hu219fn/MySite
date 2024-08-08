@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{subject.title}} - الملازم{% endblock title %}
+{% block body %}
+<div class='container' style='margin:0'>
+    <header>
+        <button><a href='/lesson/{{subject.id}}/add_notebook/'>اضافة ملزمة</a></button>
+        <form method='GET' action='/lesson/{{subject.id}}/search-notebooks/'>
+            <input type='text' name='search_notebook' placeholder='ابحث عن ملزمة'>
+            <button type='submit'><span class="material-symbols-outlined">search</span></button>
+            <a href='/lesson/{{subject.id}}/'><span class="material-symbols-rounded">arrow_back_ios</span></a>
+        </form>
+    </header>
+    {% for item in items %}
+    <div class='book'>
+        <a {% if item.file %} href='{{item.file.url}}' {% else %} href='{{item.url}}' {% endif %} target='_blank' style='display: flex;align-items: center;justify-content: right;'>
+            <span class="material-symbols-outlined">article</span>
+            <div style='display:block;padding:0'>
+                <h2>{{item.title}}</h2>
+                {% if item.description %}
+                <p>{{item.description}}</p>
+                {% endif %}
+                <b>{{item.date}}</b>
+            </div>
+        </a>
+        <ul>
+            <li><a href='/lesson/{{subject.id}}/notebooks/edit/{{item.id}}/'><span style='color:darkseagreen' class="material-symbols-outlined">edit_square</span></a></li>
+            <li><a href='/notebooks/del/{{item.id}}/'><span style='color:coral' class="material-symbols-outlined">delete</span></a></li>
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

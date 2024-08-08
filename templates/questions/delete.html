@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}حذف الاسئلة{% endblock title %}
+{% block body %}
+<form method='post' class='delform'>
+    <h1>حذف الاسئلة</h1>
+    {% csrf_token %}
+    <h2>هل انت متاكد من حذف هذا الاسئلة؟</h2>
+    <div>
+        <button type='submit'>نعم</button>
+        <a href="/lesson/{{item.subject.id}}/questions/">لا</a>
+    </div>
+</form>
+{% endblock body %}

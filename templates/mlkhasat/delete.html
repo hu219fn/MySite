@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}حذف الملخص{% endblock title %}
+{% block body %}
+<form method='post' class='delform'>
+    <h1>حذف الملخص</h1>
+    {% csrf_token %}
+    <h2>هل انت متاكد من حذف هذا الملخص؟</h2>
+    <div>
+        <button type='submit'>نعم</button>
+        <a href="/mlkhasat/{{item.id}}">لا</a>
+    </div>
+</form>
+{% endblock body %}

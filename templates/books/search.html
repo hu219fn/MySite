@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{subject.title}} - الكتب{% endblock title %}
+{% block body %}
+<div class='container' style='margin:0'>
+    <header>
+        <button><a href='/lesson/{{subject.id}}/add_book/'>اضافة كتاب</a></button>
+        <button><a href='/lesson/{{subject.id}}/books/'>كل الكتب</a></button>
+    </header>
+    {% for item in items %}
+    <div class='book'>
+        <a {% if item.file %} href='{{item.file.url}}' {% else %} href='{{item.url}}' {% endif %} target='_blank' style='display: flex;align-items: center;justify-content: right;'>
+            <span class="material-symbols-outlined">article</span>
+            <div style='display:block;padding:0'>
+                <h2>{{item.title}}</h2>
+                {% if item.description %}
+                <p>{{item.description}}</p>
+                {% endif %}
+                <b>{{item.date}}</b>
+            </div>
+        </a>
+        <ul>
+            <li><a href='books/edit/{{item.id}}/'><span style='color:darkseagreen' class="material-symbols-outlined">edit_square</span></a></li>
+            <li><a href='books/del/{{item.id}}/'><span style='color:coral' class="material-symbols-outlined">delete</span></a></li>
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

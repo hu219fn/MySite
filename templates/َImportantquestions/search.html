@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{subject.title}} - الاسئلة الوزارية{% endblock title %}
+{% block body %}
+<div class='container' style='margin:0'>
+    <header>
+        <button><a href='/lesson/{{subject.id}}/add_ImportantQuestion/'>اضافة اسئلة</a></button>
+        <button><a href='/lesson/{{subject.id}}/importantQuestions/'>كل الاسئلة الوزارية</a></button>
+    </header>
+    {% for item in items %}
+    <div>
+        <main style='display:flex; align-items:center; justify-content:space-between'>
+            <a target='_blank' style='display:flex; align-items:center; justify-content:space-between' {% if item.image %} href='{{item.image.url}}' {% elif item.file %} href='{{item.file.url}}' {% else %}{% endif %}>
+                {% if item.image %}
+                <img src='{{item.image.url}}'>
+                {% elif item.file %}
+                <span class="material-symbols-rounded" id='icon'>picture_as_pdf</span>
+                {% else %}
+                {% endif %}
+                <a href='/ImportantQuestion/{{item.id}}/' style='display:block'>
+                    <h2>{{ item.title }}</h2>
+                    {% if item.description %}
+                    <p>{{ item.description }}</p>
+                    {% endif %}
+                    <b>{{ item.date }}</b>
+                </a>
+            </a>
+            <ul style='ist-style: none;position: absolute;left: 40px;'>
+                <li><a href='/ImportantQuestions/edit/{{item.id}}/'><span style='color:darkseagreen' class="material-symbols-outlined">edit_square</span></a></li>
+                <li><a href='/ImportantQuestions/del/{{item.id}}/'><span style='color:coral' class="material-symbols-outlined">delete</span></a></li>
+            </ul>
+        </main>
+    </div>
+    <hr style='margin: 0;'>
+    {% endfor %}
+</div>
+{% endblock body %}

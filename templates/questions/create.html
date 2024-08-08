@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}اضافة كتاب{% endblock title %}
+{% block body %}
+<form method='post' enctype="multipart/form-data">
+    <h1>اضافة كتاب</h1>
+    {% csrf_token %}
+    <label for='title'>عنوان الكتاب*:</label>
+    <input type="text" name="title" id="title">
+    <label for='description'>الوصف:</label>
+    <textarea name='description' id='description'></textarea>
+    <label for='image'>اضافة صورة السؤال</label>
+    <input type="file" name="image" id="image">
+    <label for='book'>او اضافة pdf الاسئلة:</label>
+    <input type="file" name="file" id="book">
+    <label for='url'>او اضافة رابط السؤال:</label>
+    <input type='url' name='url' id='url'>
+
+    <input type='submit' value='حفظ'>
+</form>
+{% endblock body %}

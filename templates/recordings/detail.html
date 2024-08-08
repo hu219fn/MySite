@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% block title %}تسجيلات - {{item.title}}{% endblock title %}
+{% block body %}
+
+<div class='container'>
+    <a class='p-abs' href='/lesson/{{item.subject.id}}/recordings/'><span class="material-symbols-rounded">arrow_back_ios</span></a>
+    <div>
+        <main>
+            <h2>{{ item.title }}</h2>
+            {% if item.description %}
+            <p style='margin: 10px 0;height: auto;width: auto;'>{{ item.description }}</p>
+            {% endif %}
+            {% if item.file %}
+            <button class='items'>
+                <a target='items' href='{{item.file.url}}'>
+                    <span class="material-symbols-rounded">attach_file</span>
+                    <small>الملف</small>
+                </a>
+            </button>
+            {% endif %}
+            {% if item.image %}
+            <button class='items'>
+                <a target='_blank' href='{{item.image.url}}'>
+                    <span class="material-symbols-rounded">photo</span>
+                    <small>الصورة</small>
+                </a>
+            </button>
+            {% endif %}
+            {% if item.url %}
+            <button class='items'>
+                <a target='_blank' href='{{item.url}}'>
+                    <span class="material-symbols-rounded">link</span>
+                    <small>الرابط</small>
+                </a>
+            </button>
+            {% endif %}
+
+            {% if item.audio_file1 and item.audio_file2 and item.audio_file3 and item.audio_file4 and item.audio_file5  %}
+            {% else %}
+            <div class="container" style='margin:0;padding:0'>
+                <div class="controllers">
+                </div><br>
+                <div class='display' style='padding:0'>
+                </div>
+            </div>
+            {% endif %}<br>
+            {% if item.audio_file1 %}
+            <audio controls src='{{item.audio_file1.url}}'></audio>
+            {% endif %}<br>
+            {% if item.audio_file2 %}
+            <audio controls src='{{item.audio_file2.url}}'></audio>
+            {% endif %}<br>
+            {% if item.audio_file3 %}
+            <audio controls src='{{item.audio_file3.url}}'></audio>
+            {% endif %}<br>
+            {% if item.audio_file4 %}
+            <audio controls src='{{item.audio_file4.url}}'></audio>
+            {% endif %}<br>
+            {% if item.audio_file5 %}
+            <audio controls src='{{item.audio_file5.url}}'></audio>
+            {% endif %}
+            <b style='margin: 20px 0;'>{{ item.date }}</b>
+        </main>
+    </div>
+    <ul style='display: flex; list-style:none'>
+        <li style='margin:0 10px'><a class='fs-25px btn' href='/recording/edit/{{item.id}}/' style='color:darkseagreen' >تعديل</a></li>
+        <li style='margin:0 10px'><a class='fs-25px btn' href='/recording/del/{{item.id}}/' style='color:coral' >حذف</a></li>
+    </ul>
+    <br>
+    <br>
+    {% if item.audio_file1 and item.audio_file2 and item.audio_file3 and item.audio_file4 and item.audio_file5  %}
+    {% else %}
+    <form method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>اضافة التسجيل الصوتي</h1>
+        {% if item.audio_file1 %}
+        {% else %}
+        <input type="file" name="record1">
+        {% endif %}
+        {% if item.audio_file2 %}
+        {% else %}
+        <input type="file" name="record2">
+        {% endif %}
+        {% if item.audio_file3 %}
+        {% else %}
+        <input type="file" name="record3">
+        {% endif %}
+        {% if item.audio_file4 %}
+        {% else %}
+        <input type="file" name="record4">
+        {% endif %}
+        {% if item.audio_file5 %}
+        {% else %}
+        <input type="file" name="record5">
+        {% endif %}
+        <input type='submit' value='حفظ'>
+    </form>
+    {% endif %}
+</div>
+
+<script>
+    const display = document.querySelector('.display')
+    const controllerWrapper = document.querySelector('.controllers')
+    const State = ['Initial', 'Record', 'Download']
+    let stateIndex = 0
+    let mediaRecorder, chunks = [], audioURL = ''
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+        console.log('mediaDevices supported..')
+        navigator.mediaDevices.getUserMedia({
+            audio: true
+        }).then(stream => {
+            mediaRecorder = new MediaRecorder(stream)
+            mediaRecorder.ondataavailable = (e) => {
+                chunks.push(e.data)
+            }
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(chunks, {'type': 'audio/ogg; codecs=opus'})
+                chunks = []
+                audioURL = window.URL.createObjectURL(blob)
+                document.querySelector('audio').src = audioURL
+            }
+        }).catch(error => {
+            console.log('Following error has occured : ',error)
+        })
+    }else{
+        stateIndex = ''
+        application(stateIndex)
+    }
+    const clearDisplay = () => {
+        display.textContent = ''
+    }
+    const clearControls = () => {
+        controllerWrapper.textContent = ''
+    }
+    const record = () => {
+        stateIndex = 1
+        mediaRecorder.start()
+        application(stateIndex)
+    }
+    const stopRecording = () => {
+        stateIndex = 2
+        mediaRecorder.stop()
+        application(stateIndex)
+    }
+    const downloadAudio = () => {
+        const downloadLink = document.createElement('a')
+        downloadLink.href = audioURL
+        downloadLink.setAttribute('download', 'audio')
+        downloadLink.click()
+    }
+    const addButton = (id, funString, text) => {
+        const btn = document.createElement('button')
+        btn.id = id
+        btn.setAttribute('onclick', funString)
+        btn.textContent = text
+        controllerWrapper.append(btn)
+    }
+    const addMessage = (text) => {
+        const msg = document.createElement('p')
+        msg.textContent = text
+    }
+    const addAudio = () => {
+        const audio = document.createElement('audio')
+        audio.controls = true
+        audio.preload = 'metadata'
+        audio.src = audioURL
+        display.append(audio)
+        display.append(document.createElement('br'))
+    }
+    const application = (index) => {
+        switch (State[index]) {
+            case 'Initial':
+                clearControls()
+                addButton('record', 'record()', 'ابدأ التسجيل')
+                break;
+            case 'Record':
+                clearControls()
+                addButton('stop', 'stopRecording()', 'اوقف التسجيل')
+                break
+            case 'Download':
+                clearControls()
+                addAudio()
+                addButton('record', 'record()', 'سجل مرة اخرى')
+                break
+            default:
+                clearControls()
+                addMessage('Your browser does not support mediaDevices')
+                break;
+        }
+    }
+    
+    application(stateIndex)    
+</script>
+{% endblock body %}

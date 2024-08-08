@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}اضافة ملخص{% endblock title %}
+{% block body %}
+<form method='post' enctype="multipart/form-data">
+    <h1>اضافة ملخص</h1>
+    {% csrf_token %}
+    <p>
+        <label for='title'>عنوان الملخص*:</label>
+        <input type="text" name="title" id="title">
+    </p>
+    <p>
+        <label for='description'>الوصف:</label>
+        <textarea name='description' id='description'></textarea>
+    </p>
+    <p>
+        <label for='image'>اضافة صورة للملخص:*</label>
+        <input type="file" name="image" id="image">
+    </p>
+    <p>
+        <label for='file'>او اضافة pdf للملخص:*</label>
+        <input type="file" name="file" id="file">
+    </p>
+    <p>
+        <label for='url'>او اضافة رابط الملخص:</label>
+        <input type='url' name='url' id='url'>
+    </p>
+    <input type='submit' value='حفظ'>
+</form>
+{% endblock body %}
